@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Generate Random Codes</title>
+</head>
+<body>
+    <h1>GENERATOR 5000 UNCHECKED NITRO CODE BY YOUTUBER</h1>
+    <button onclick="generateCodes()">GENERUJ KODY</button>
+    <p id="result"></p>
+    <script>
+        function generateCodes() {
+            const numCodes = 5000;
+            const codeLength = 16;
+            const charset = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            let result = "";
+            
+            for (let i = 0; i < numCodes; i++) {
+                let code = "";
+                for (let j = 0; j < codeLength; j++) {
+                    const randomIndex = Math.floor(Math.random() * charset.length);
+                    code += charset[randomIndex];
+                }
+                result += `https://discord.gift/${code}\n`;
+            }
+            
+            // Wyświetl wynik na stronie lub zapisz go do pliku
+            document.getElementById("result").innerText = result;
+            
+            // Opcjonalnie: Zapisz wynik do pliku tekstowego
+            download("generated_codes.txt", result);
+        }
+
+        function download(filename, text) {
+            const element = document.createElement('a');
+            element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+            element.setAttribute('download', filename);
+
+            element.style.display = 'none';
+            document.body.appendChild(element);
+
+            element.click();
+            document.body.removeChild(element);
+        }
+    </script>
+</body>
+</html>
